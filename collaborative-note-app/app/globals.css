@@ -2,3 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Responsive utilities */
+@layer utilities {
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  /* Improve touch targets */
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Ensure ellipsis works on mobile */
+  .truncate,
+  .line-clamp-1,
+  .line-clamp-2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+  
+  .truncate {
+    white-space: nowrap;
+    display: block;
+  }
+  
+  .line-clamp-1 {
+    -webkit-line-clamp: 1;
+  }
+  
+  .line-clamp-2 {
+    -webkit-line-clamp: 2;
+  }
+}
+

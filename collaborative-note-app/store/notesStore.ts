@@ -4,7 +4,9 @@ import { Note, NoteVersion } from '@/types'
 interface NotesState {
   notes: Note[]
   selectedNoteId: string | null
+  isInitialized: boolean
   addNote: (note: Note) => void
+  setNotes: (notes: Note[]) => void
   updateNote: (id: string, title: string, content: string) => void
   deleteNote: (id: string) => void
   selectNote: (id: string | null) => void
@@ -24,6 +26,12 @@ const generateUserColor = () => {
 export const useNotesStore = create<NotesState>((set) => ({
   notes: [],
   selectedNoteId: null,
+  isInitialized: false,
+  
+  setNotes: (newNotes) => set({ 
+    notes: newNotes,
+    isInitialized: true
+  }),
   
   addNote: (note) => {
     // Ensure note has an initial version if it doesn't have versions
